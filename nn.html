@@ -1,3 +1,32 @@
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis id unde quaerat
-distinctio quidem natus, molestiae fuga praesentium tempore est, quibusdam iste
-dolore doloribus porro quia autem ut voluptatem? Aliquam.
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.17/Tone.js"></script>
+    <title>Sweerd</title>
+  </head>
+  <body>
+    <select id="oscType">
+      <option value="sine">Sine</option>
+      <option value="sawtooth">sawtooth</option>
+      <option value="triangle">triangle</option>
+      <option value="square">square</option>
+    </select>
+    <input max="10000" min="0" id="freq-osc" type="range" />
+    <button id="startbtn">play</button>
+    <button class="stopbtn">Stop</button>
+    <button class="start-clock">Clock</button>
+    <script type="text/javascript" src="mapp.js"></script>
+    <script type="text/javascript" src="violin.js"></script>
+    <!-- <button id="play-button">Play/Pause</button>
+    -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.74/Tone.js"></script> -->
+  </body>
+</html>
