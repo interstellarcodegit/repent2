@@ -1,3 +1,8 @@
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
+
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { styles } from "./styles";
@@ -6,7 +11,11 @@ import {
   Header,
   ScreenController,
   HomeScreen,
+  EnrollScreen,
   ScrollComponent,
+  ExecEnroll,
+  LessonsScreen,
+  PostSubmitScreen,
 } from "./components";
 
 import {
@@ -14,11 +23,14 @@ import {
   Dimensions,
   FlatList,
   Image,
+  Button,
   ImageBackground,
   Text,
   View,
   ScrollView,
 } from "react-native";
+{
+}
 // var imagesource = "worship";
 // // import log from "./assets/logo.png";
 // const SetImageBackground = () => {
@@ -31,8 +43,10 @@ import {
 // };
 // var imgurl = `./assets/${imagesource}.jpg`;
 // var lasturl = imgurl.toString();
-export default function App() {
+export var activeScreen = () => {};
+const NHomeScreen = () => {
   const [screen, setScreen] = React.useState("lessons");
+
   return (
     <ImageBackground
       style={styles.bgImage}
@@ -76,7 +90,7 @@ export default function App() {
               setScreen("Radio");
             }}
           >
-            Radio
+            Radio {""}
           </Text>
         </View>
         <View style={styles.slidermCont}>
@@ -96,7 +110,7 @@ export default function App() {
               setScreen("Healings");
             }}
           >
-            Healings
+            Healings{" "}
           </Text>
         </View>
         <View style={styles.slidermCont}>
@@ -106,7 +120,7 @@ export default function App() {
               setScreen("lessons");
             }}
           >
-            Lessons
+            Lessons{" "}
           </Text>
         </View>
         <View style={styles.slidermCont}>
@@ -116,12 +130,70 @@ export default function App() {
               setScreen("Worship");
             }}
           >
-            Worship
+            Worship {""}
           </Text>
         </View>
       </View>
       {/* <Slider style={styles.Slidermn} /> */}
       {/* <StatusBar style="auto" /> */}
     </ImageBackground>
+  );
+};
+function LogoTitle() {
+  return (
+    <View style={styles.rowViewb2n}>
+      <Image
+        style={{ width: 50, height: 50 }}
+        source={require("./assets/splash.png")}
+      />
+      <Text style={styles.mainTxt}>Repent and Prepare The Way</Text>
+    </View>
+  );
+}
+const MyTheme = {
+  dark: true,
+  colors: {
+    primary: "red",
+    background: "blue",
+    card: " rgb(17, 4, 26)",
+    text: "green",
+    border: "aqua",
+    notification: "rgb(255, 69, 58)",
+  },
+};
+export default function App({ navigation }) {
+  return (
+    <NavigationContainer theme={MyTheme}>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          options={{
+            headerTitle: (props) => <LogoTitle {...props} />,
+          }}
+          component={NHomeScreen}
+        />
+        <Stack.Screen
+          name="enroll"
+          options={{
+            headerTitle: (props) => <LogoTitle {...props} />,
+          }}
+          component={EnrollScreen}
+        />
+        <Stack.Screen
+          name="lessons"
+          options={{
+            headerTitle: (props) => <LogoTitle {...props} />,
+          }}
+          component={LessonsScreen}
+        />
+        <Stack.Screen
+          name="post-submit"
+          options={{
+            headerTitle: (props) => <LogoTitle {...props} />,
+          }}
+          component={PostSubmitScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
