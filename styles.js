@@ -10,6 +10,7 @@ const slidermContWidth = 38;
 const theme = {
   MaintextColor: "#59FF61",
   textColor: "white",
+  textColorLight: "wheat",
   bgColor: "rgba(0,5,0,0.5)",
   mildTransparent: "rgba(0,0,0,0.7)",
   borderColor: "aqua",
@@ -27,16 +28,40 @@ const windowHeight = Dimensions.get("window").height;
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: windowHeight / 17,
     backgroundColor: theme.mildTransparent,
+  },
+  topChatView: {
+    height: windowHeight / 10,
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    backgroundColor: "black",
+  },
+  topView: {
+    height: windowHeight / 5,
+    backgroundColor: "black",
+  },
+  welcomeText: {
+    color: theme.textColor,
+    fontSize: 25,
+  },
+  smWelcomeText: {
+    color: theme.textColorLight,
+    fontSize: 20,
+  },
+  topFlex: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   bgImage: {
     flex: 1,
     resizeMode: "cover",
   },
   headerImage: {
-    height: 40,
-    width: 40,
-    marginTop: 20,
+    height: 100,
+    width: 100,
+    marginTop: windowHeight / 60,
     // paddingRight: 5,
     // paddingTop: 5,
   },

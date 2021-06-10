@@ -3,20 +3,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+const Tab = createBottomTabNavigator();
+
+import { UpdatesScreen } from "./views/updates";
+import { HomeScreen } from "./views/home";
+import { ActivityScreen } from "./views/activities";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { styles } from "./styles";
-import {
-  Slider,
-  Header,
-  ScreenController,
-  HomeScreen,
-  EnrollScreen,
-  ScrollComponent,
-  ExecEnroll,
-  LessonsScreen,
-  PostSubmitScreen,
-} from "./components";
 
 import {
   StyleSheet,
@@ -29,116 +25,8 @@ import {
   View,
   ScrollView,
 } from "react-native";
-{
-}
-// var imagesource = "worship";
-// // import log from "./assets/logo.png";
-// const SetImageBackground = () => {
-//   setInterval(() => {
-//     if (imagesource == "worship") {
-//       imagesource = "aurora";
-//     }
-//     imagesource = "worship";
-//   }, 60000);
-// };
-// var imgurl = `./assets/${imagesource}.jpg`;
-// var lasturl = imgurl.toString();
-export var activeScreen = () => {};
-const NHomeScreen = () => {
-  const [screen, setScreen] = React.useState("lessons");
+import { ChatScreen } from "./views/chat";
 
-  return (
-    <ImageBackground
-      style={styles.bgImage}
-      source={require("./assets/worship.jpg")}
-    >
-      <ScreenController screen={screen} />
-      <View style={styles.sliderCont}>
-        {/* decelerationRate={"normal"}> */}
-        <View style={styles.slidermCont}>
-          <Text
-            // onPress={() => {
-            //   if (Color == "red") {
-            //     setColor("chartreuse");
-            //   } else {
-            //     setColor("red");
-            //   }
-            // }}
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("home");
-            }}
-          >
-            Home
-          </Text>
-        </View>
-
-        <View style={styles.slidermCont}>
-          <Text
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("News");
-            }}
-          >
-            News
-          </Text>
-        </View>
-        <View style={styles.slidermCont}>
-          <Text
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("Radio");
-            }}
-          >
-            Radio {""}
-          </Text>
-        </View>
-        <View style={styles.slidermCont}>
-          <Text
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("Teachings");
-            }}
-          >
-            Teachings{" "}
-          </Text>
-        </View>
-        <View style={styles.slidermCont}>
-          <Text
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("Healings");
-            }}
-          >
-            Healings{" "}
-          </Text>
-        </View>
-        <View style={styles.slidermCont}>
-          <Text
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("lessons");
-            }}
-          >
-            Lessons{" "}
-          </Text>
-        </View>
-        <View style={styles.slidermCont}>
-          <Text
-            style={styles.sliderText}
-            onPress={() => {
-              setScreen("Worship");
-            }}
-          >
-            Worship {""}
-          </Text>
-        </View>
-      </View>
-      {/* <Slider style={styles.Slidermn} /> */}
-      {/* <StatusBar style="auto" /> */}
-    </ImageBackground>
-  );
-};
 function LogoTitle() {
   return (
     <View style={styles.rowViewb2n}>
@@ -163,37 +51,19 @@ const MyTheme = {
 };
 export default function App({ navigation }) {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
+    <NavigationContainer>
+      <Tab.Navigator initialRouteName="Home">
+        <Tab.Screen
           name="Home"
           options={{
             headerTitle: (props) => <LogoTitle {...props} />,
           }}
-          component={NHomeScreen}
+          component={HomeScreen}
         />
-        <Stack.Screen
-          name="enroll"
-          options={{
-            headerTitle: (props) => <LogoTitle {...props} />,
-          }}
-          component={EnrollScreen}
-        />
-        <Stack.Screen
-          name="lessons"
-          options={{
-            headerTitle: (props) => <LogoTitle {...props} />,
-          }}
-          component={LessonsScreen}
-        />
-        <Stack.Screen
-          name="post-submit"
-          options={{
-            headerTitle: (props) => <LogoTitle {...props} />,
-          }}
-          component={PostSubmitScreen}
-        />
-      </Stack.Navigator>
+        <Tab.Screen name="Updates" component={UpdatesScreen} />
+        <Tab.Screen name="Activities" component={ActivityScreen} />
+        <Tab.Screen name="Chat" component={ChatScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
