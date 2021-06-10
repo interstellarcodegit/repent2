@@ -53,13 +53,7 @@ export default function App({ navigation }) {
   return (
     <NavigationContainer>
       <Tab.Navigator initialRouteName="Home">
-        <Tab.Screen
-          name="Home"
-          options={{
-            headerTitle: (props) => <LogoTitle {...props} />,
-          }}
-          component={HomeScreen}
-        />
+        <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Updates" component={UpdatesScreen} />
         <Tab.Screen name="Activities" component={ActivityScreen} />
         <Tab.Screen name="Chat" component={ChatScreen} />

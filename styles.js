@@ -57,6 +57,8 @@ export const styles = StyleSheet.create({
   bgImage: {
     flex: 1,
     resizeMode: "cover",
+	width:windowWidth,
+	  height:windowHeight,
   },
   headerImage: {
     height: 100,
