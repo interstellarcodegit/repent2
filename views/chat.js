@@ -9,6 +9,7 @@ import {
   View,
   ScrollView,
 } from "react-native";
+import { Card } from "../components";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { styles } from "../styles";
@@ -20,6 +21,13 @@ export const ChatScreen = () => {
       </View>
       <ScrollView>
         <View></View>
+        <Card
+          iconColor="red"
+          iconFamily="entypo"
+          iconName="facebook"
+          uri="https://www.tenderyetu.com/wp-content/uploads/2021/05/Mangu-High-School-TENDER.jpg"
+          name="kadi"
+        />
       </ScrollView>
     </View>
   );

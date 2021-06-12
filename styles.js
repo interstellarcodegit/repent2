@@ -9,10 +9,10 @@ const slidermContHeight = 38;
 const slidermContWidth = 38;
 const theme = {
   MaintextColor: "#59FF61",
-  textColor: "white",
+  textColor: "maroon",
   textColorLight: "wheat",
   bgColor: "rgba(0,5,0,0.5)",
-  mildTransparent: "rgba(0,0,0,0.7)",
+  mildTransparent: "rgba(0,0,0,0.9)",
   borderColor: "aqua",
   borderBottomColor: "#59FF61",
   lsborderColor: "beige",
@@ -53,21 +53,85 @@ export const styles = StyleSheet.create({
   topFlex: {
     flexDirection: "row",
     justifyContent: "space-between",
+    backgroundColor: theme.mildTransparent,
+    height: windowHeight / 5,
   },
   bgImage: {
     flex: 1,
     resizeMode: "cover",
-	width:windowWidth,
-	  height:windowHeight,
+    width: windowWidth,
+    height: windowHeight,
+  },
+  Card: {
+    flexDirection: "column",
+    height: windowHeight / 3.5,
+    width: windowWidth / 2.5,
+    backgroundColor: "rgba(0,0,0,0.7)",
+  },
+  cardImage: {
+    height: windowHeight / 4.3,
+    width: windowWidth / 2.8,
+    borderRadius: 7,
+  },
+  cardText: {
+    color: "aqua",
+    fontSize: 17,
+  },
+  cardView: {
+    flexDirection: "column",
+
+    // marginTop: windowHeight / 20,
+  },
+  topCardText: {
+    color: "maroon",
+    zIndex: 1000,
+    fontSize: 22,
+  },
+  mnCardView: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginBottom: windowHeight / 30,
+  },
+  mnCardView2: {
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   headerImage: {
-    height: 100,
-    width: 100,
-    marginTop: windowHeight / 60,
+    resizeMode: "cover",
+
+    height: windowHeight / 5,
+    // marginTop: windowHeight / 60,
     // paddingRight: 5,
     // paddingTop: 5,
   },
-
+  profileNameViewDecorator: {
+    backgroundColor: "red",
+    borderRadius: 5,
+  },
+  profileView: {
+    backgroundColor: "black",
+  },
+  profileImage: {
+    height: 100,
+    width: 100,
+    resizeMode: "cover",
+    borderRadius: 50,
+  },
+  profileText: {
+    color: "white",
+  },
+  profileNameView: {
+    backgroundColor: "black",
+    // margin:5,
+    padding: 5,
+    borderRadius: 10,
+  },
+  profileImageEnclosure: {
+    height: 104,
+    width: 104,
+    borderRadius: 52,
+    backgroundColor: "rgb(255, 0, 221)",
+  },
   textView: {
     //flex: 0.1,
     flexDirection: "row",
