@@ -130,7 +130,7 @@ export const styles = StyleSheet.create({
     height: 104,
     width: 104,
     borderRadius: 52,
-    backgroundColor: "rgb(255, 0, 221)",
+    backgroundColor: "red",
   },
   textView: {
     //flex: 0.1,
@@ -141,6 +141,10 @@ export const styles = StyleSheet.create({
     borderBottomColor: theme.borderBottomColor,
     justifyContent: "space-between",
     backgroundColor: theme.bgColor,
+  },
+  flexRowView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   showView: {
     borderStyle: "solid",

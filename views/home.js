@@ -53,12 +53,16 @@ const Card = (props) => {
   return (
     <View style={styles.Card}>
       <Image style={styles.cardImage} source={{ uri: props.image }} />
-      <IconSelector
-        family="antdesign"
-        name={props.iconName}
-        color={props.iconColor}
-      />
-      <Text style={styles.cardText}>{props.iname}</Text>
+      <View>
+        <View style={styles.flexRowView}>
+          <IconSelector
+            family={props.iconFamily}
+            name={props.iconName}
+            color={props.iconColor}
+          />
+          <Text style={styles.cardText}>{props.iname}</Text>
+        </View>
+      </View>
     </View>
   );
 };
@@ -108,16 +112,25 @@ export const HomeScreen = () => {
               image="https://www.kassfm.co.ke/home/wp-content/uploads/2019/03/Mang%C3%BA.jpg"
             />
             <Card
+              iconColor="green"
+              iconName="book"
+              iconFamily="antdesign"
               iname="Clubs"
               image="https://upload.wikimedia.org/wikipedia/en/5/5a/Mang%27u_students.jpeg"
             />
           </View>
           <View style={styles.mnCardView2}>
             <Card
-              iname="Key events"
+              iconColor="green"
+              iconName="book"
+              iconFamily="antdesign"
+              iname="History"
               image="https://i2.wp.com/www.kahawatungu.com/wp-content/uploads/2019/03/D1yJOLtWsAAs0s1.jpg?fit=1152%2C892&ssl=1"
             />
             <Card
+              iconColor="green"
+              iconName="book"
+              iconFamily="antdesign"
               iname="Gallery "
               image="https://pbs.twimg.com/media/Cb56zVsXIAEQQi5.jpg"
             />
