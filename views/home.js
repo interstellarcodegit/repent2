@@ -22,7 +22,19 @@ import {
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { styles } from "../styles";
+import AppLoading from 'expo-app-loading';
+import {  Inter_900Black } from '@expo-google-fonts/inter';
+import { Ubuntu_300Light } from '@expo-google-fonts/ubuntu';
+import { useFonts,Cinzel_400Regular } from '@expo-google-fonts/cinzel';
+
+const  standardTxtColor ="#673ab7"
+const  mlStandardTxtColor ="#222"
+
+
 const IconSelector = (props) => {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black, Ubuntu_300Light,Cinzel_400Regular
+  });
   if (props.family == "fontawesome") {
     return <FontAwesome name={props.name} size={24} color={props.color} />;
   }
@@ -37,7 +49,7 @@ const IconSelector = (props) => {
   if (props.family == "fontisto") {
     return <Fontisto name={props.name} size={24} color={props.color} />;
   }
-  if (props.family == "entypo") {
+  if (props.family == "Entypo") {
     return <Entypo name={props.name} size={24} color={props.color} />;
   }
 
@@ -50,6 +62,12 @@ const IconSelector = (props) => {
 };
 
 const Card = (props) => {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black, Ubuntu_300Light,Cinzel_400Regular
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={styles.Card}>
       <Image style={styles.cardImage} source={{ uri: props.image }} />
@@ -67,6 +85,12 @@ const Card = (props) => {
   );
 };
 export const HomeScreen = () => {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black, Ubuntu_300Light,Cinzel_400Regular
+  });
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <ImageBackground
       source={require("../assets/images/mangu.jpg")}
@@ -91,11 +115,11 @@ export const HomeScreen = () => {
                   style={styles.profileImage}
                 />
               </View>
-              <View style={styles.profileNameViewDecorator}>
+              {/* <View style={styles.profileNameViewDecorator}>
                 <View style={styles.profileNameView}>
                   <Text style={styles.profileText}>Obongo Githuka</Text>
                 </View>
-              </View>
+              </View> */}
             </View>
           </View>
         </ImageBackground>
@@ -105,32 +129,32 @@ export const HomeScreen = () => {
         <View style={styles.cardView}>
           <View style={styles.mnCardView}>
             <Card
-              iconColor="green"
-              iconName="book"
-              iconFamily="antdesign"
+              iconColor={standardTxtColor}
+              iconName="bookshelf"
+              iconFamily="MaterialCommunityIcons"
               iname="Academics"
               image="https://www.kassfm.co.ke/home/wp-content/uploads/2019/03/Mang%C3%BA.jpg"
             />
             <Card
-              iconColor="green"
-              iconName="book"
-              iconFamily="antdesign"
-              iname="Clubs"
+              iconColor={standardTxtColor}
+              iconName="spade"
+              iconFamily="MaterialCommunityIcons"
+              iname="Activities"
               image="https://upload.wikimedia.org/wikipedia/en/5/5a/Mang%27u_students.jpeg"
             />
           </View>
           <View style={styles.mnCardView2}>
             <Card
-              iconColor="green"
-              iconName="book"
-              iconFamily="antdesign"
+              iconColor={standardTxtColor}
+              iconName="change-history"
+              iconFamily="MaterialIcons"
               iname="History"
               image="https://i2.wp.com/www.kahawatungu.com/wp-content/uploads/2019/03/D1yJOLtWsAAs0s1.jpg?fit=1152%2C892&ssl=1"
             />
             <Card
-              iconColor="green"
-              iconName="book"
-              iconFamily="antdesign"
+              iconColor={standardTxtColor}
+              iconName="images"
+              iconFamily="Entypo"
               iname="Gallery "
               image="https://pbs.twimg.com/media/Cb56zVsXIAEQQi5.jpg"
             />

@@ -27,7 +27,12 @@ import {
   ScrollView,
 } from "react-native";
 import { ChatScreen } from "./views/chat";
-
+import { AntDesign, Ionicons,Feather ,MaterialIcons,Entypo
+} from '@expo/vector-icons'; 
+import AppLoading from 'expo-app-loading';
+import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import { Ubuntu_300Light } from '@expo-google-fonts/ubuntu';
+import { Cinzel_400Regular } from '@expo-google-fonts/cinzel';
 function LogoTitle() {
   return (
     <View style={styles.rowViewb2n}>
@@ -39,6 +44,10 @@ function LogoTitle() {
     </View>
   );
 }
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+const  standardTxtColor ="#673ab7"
+const  mlStandardTxtColor ="#222"
 const MyTheme = {
   dark: true,
   colors: {
@@ -51,12 +60,17 @@ const MyTheme = {
   },
 };
 function MyTabBar({ state, descriptors, navigation }) {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black, Ubuntu_300Light,Cinzel_400Regular
+  });
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
     return null;
   }
-
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
   return (
     <View style={{ flexDirection: "row" }}>
       {state.routes.map((route, index) => {
@@ -68,7 +82,18 @@ function MyTabBar({ state, descriptors, navigation }) {
             ? options.title
             : route.name;
 
-        const isFocused = state.index === index;
+            const isFocused = state.index === index;
+            const icon =
+              label=='Home'
+              ?<AntDesign name="home" size={24} color={ isFocused ?standardTxtColor : mlStandardTxtColor } />
+              :label=='Activities'
+              ?<Feather name="activity" size={24} color={ isFocused ?standardTxtColor : mlStandardTxtColor }/>
+              :label=='Updates'
+              ?<MaterialIcons name="notifications-active" size={24} color={ isFocused ?standardTxtColor : mlStandardTxtColor } />
+              :label=="Chat"
+              ?<Entypo name="chat" size={24} color={ isFocused ?standardTxtColor : mlStandardTxtColor } />
+              :<Entypo name="chat" size={24} color={ isFocused ?standardTxtColor : mlStandardTxtColor } />
+       
 
         const onPress = () => {
           const event = navigation.emit({
@@ -97,11 +122,14 @@ function MyTabBar({ state, descriptors, navigation }) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}
+            style={{ flex: 1 , height:windowHeight/15,
+            alignContent:'center',justifyContent:'center',alignItems:'center',
+          }}
           >
-            <Text style={{ color: isFocused ? "#673ab7" : "#222" }}>
+            {/* <Text style={{ color: isFocused ? "#673ab7" : "#222" }}>
               {label}
-            </Text>
+            </Text> */}
+            {icon}
           </TouchableOpacity>
         );
       })}
@@ -110,6 +138,9 @@ function MyTabBar({ state, descriptors, navigation }) {
 }
 
 export default function App({ navigation }) {
+  let [fontsLoaded] = useFonts({
+    Inter_900Black, Ubuntu_300Light,Cinzel_400Regular
+  });
   return (
     <NavigationContainer>
       <Tab.Navigator

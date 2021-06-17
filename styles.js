@@ -9,7 +9,9 @@ const slidermContHeight = 38;
 const slidermContWidth = 38;
 const theme = {
   MaintextColor: "#59FF61",
-  textColor: "maroon",
+  standardTxtColor :"#673ab7",
+  mlStandardTxtColor :"#222",
+  textColor: "aqua",
   textColorLight: "wheat",
   bgColor: "rgba(0,5,0,0.5)",
   mildTransparent: "rgba(0,0,0,0.9)",
@@ -19,12 +21,20 @@ const theme = {
   lstitleColor: "cyan",
   buttonBgColor: "#AA7100",
 };
+import {  Inter_900Black } from '@expo-google-fonts/inter';
+import { Ubuntu_300Light } from '@expo-google-fonts/ubuntu';
+import { useFonts,Cinzel_400Regular } from '@expo-google-fonts/cinzel';
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 // const setWidth = () => {
 //   dwidth = useWindowDimensions().width;
 // };
 //setWidth();
+function ldFont(){
+  let [fontsLoaded] = useFonts({
+    Cinzel_400Regular, Inter_900Black, Ubuntu_300Light,
+  });
+}
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -44,10 +54,12 @@ export const styles = StyleSheet.create({
   },
   welcomeText: {
     color: theme.textColor,
+    fontFamily:'Cinzel_400Regular',
     fontSize: 25,
   },
   smWelcomeText: {
-    color: theme.textColorLight,
+    color: theme.standardTxtColor,
+    fontFamily:'Ubuntu_300Light',
     fontSize: 20,
   },
   topFlex: {
@@ -76,6 +88,7 @@ export const styles = StyleSheet.create({
   cardText: {
     color: "aqua",
     fontSize: 17,
+    fontFamily:'Ubuntu_300Light',
   },
   cardView: {
     flexDirection: "column",
@@ -83,9 +96,10 @@ export const styles = StyleSheet.create({
     // marginTop: windowHeight / 20,
   },
   topCardText: {
-    color: "maroon",
+    color: theme.standardTxtColor,
     zIndex: 1000,
     fontSize: 22,
+    fontFamily:'Ubuntu_300Light',
   },
   mnCardView: {
     flexDirection: "row",
@@ -105,17 +119,17 @@ export const styles = StyleSheet.create({
     // paddingTop: 5,
   },
   profileNameViewDecorator: {
-    backgroundColor: "red",
+    backgroundColor:theme.standardTxtColor,
     borderRadius: 5,
   },
   profileView: {
     backgroundColor: "black",
   },
   profileImage: {
-    height: 100,
-    width: 100,
+    height:70,
+    width: 70,
     resizeMode: "cover",
-    borderRadius: 50,
+    borderRadius:35,
   },
   profileText: {
     color: "white",
@@ -127,10 +141,10 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
   profileImageEnclosure: {
-    height: 104,
-    width: 104,
-    borderRadius: 52,
-    backgroundColor: "red",
+    height: 72,
+    width: 72,
+    borderRadius: 36,
+    backgroundColor: theme.standardTxtColor,
   },
   textView: {
     //flex: 0.1,
@@ -144,7 +158,7 @@ export const styles = StyleSheet.create({
   },
   flexRowView: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   },
   showView: {
     borderStyle: "solid",
@@ -189,6 +203,32 @@ export const styles = StyleSheet.create({
   Slidermn: {
     padding: 30,
   },
+  chatInfoView:{
+    zIndex:1000,
+    backgroundColor:'rgba(0,0,0,0)',
+    borderBottomColor:'rgba(0, 238, 255, 0.322)',
+    borderBottomWidth:1,
+    height:windowHeight/13,
+    marginBottom:10,
+    marginTop:3,
+    flexDirection:'row',
+    justifyContent:'space-between'
+  },
+  chatIndividualName:{
+    color:'white',
+    fontSize:17,
+    fontFamily:'Ubuntu_300Light'
+  },
+  chatImageView:{
+
+  },
+  chatImage:{
+    height:50,
+    width:50,
+    borderRadius:25,
+
+  },
+
   nativeInput: {
     height: windowHeight / 15,
     borderColor: "aqua",
